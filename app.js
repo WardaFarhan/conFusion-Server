@@ -10,7 +10,7 @@ var authenticate = require('./authenticate');
 var config = require('./config');
 
 var indexRouter = require('./routes/indexRouter');
-var usersRouter = require('./routes/users');
+var users = require('./routes/users');
 var dishRouter = require('./routes/dishRouter');
 var promoRouter = require('./routes/promoRouter');
 var leaderRouter = require('./routes/leaderRouter');
