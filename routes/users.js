@@ -4,6 +4,7 @@ var User = require('../modals/user');
 //const { Router } = require('express');
 var passport = require('passport');
 var authenticate = require('../authenticate');
+const user = require('../modals/user');
 
 var router = express.Router();
 router.use(bodyParser.json());
@@ -61,6 +62,17 @@ router.get('/logout', (req, res) => {
     err.status = 403;
     next(err);
   }
+});
+
+router.route('/').get(authenticate.verifyUser, authenticate.verifyAdmin, (req, res, next) => {
+  user.find({})
+  .then((users) => {
+    res.statusCode = 200;
+        res.setHeader('Content-Type', 'application/json');
+        res.json(users);
+  },
+  (err) => next(err))
+  .catch((err) => next(err));
 });
 
 module.exports = router;
