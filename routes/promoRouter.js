@@ -12,7 +12,7 @@ promoRouter.use(bodyParser.json());
 //promotions
 promoRouter.route('/')
 .options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
-.get(cors.cors, (req, res, next) => {
+ .get(cors.cors, (req, res, next) => {
     Promotions.find({})
         .then((promotions) =>{
             res.statusCode = 200;
@@ -48,7 +48,7 @@ promoRouter.route('/')
 //promotions id
 
 promoRouter.route('/:promotionId')
-.options(cors.corswithoptions, (req, res) => { res.sendStatus(200); })
+.options(cors.corsWithOptions, (req, res) => { res.sendStatus(200); })
 .get(cors.cors, (req, res, next) => {
     Promotions.findById(req.params.promotionId)
         .then((promotion) => {
